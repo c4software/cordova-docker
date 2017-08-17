@@ -58,7 +58,7 @@ RUN apt-get update &&  \
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 # Install Android SDK
-RUN yes Y | ${ANDROID_HOME}/tools/bin/sdkmanager "build-tools;25.0.2" "platforms;android-25" "platform-tools"
+RUN yes Y | ${ANDROID_HOME}/tools/bin/sdkmanager "build-tools;25.0.2" "platforms;android-25" "platform-tools" "extras;android;m2repository" "extras;google;google_play_services"
 RUN cordova telemetry off
 
 # Installation de Graddle

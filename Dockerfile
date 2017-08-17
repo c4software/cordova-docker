@@ -17,7 +17,6 @@ RUN apt-get update &&  \
     apt-get update &&  \
     apt-get install -y nodejs && \
     npm install -g npm@"$NPM_VERSION" cordova@"$CORDOVA_VERSION" yarn@"$YARN_VERSION" && \
-    npm cache clear && \
     mkdir -p /root/.cache/yarn/ && \
 
 # Install chrome

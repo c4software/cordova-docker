@@ -1,6 +1,8 @@
 # cordova-docker
 Docker image to build (and test) Cordova app
 
+⚠️ This image was created to be used in Gitlab-Ci / TravisCI (not for direct usage)
+
 ### Features
 
 - Node

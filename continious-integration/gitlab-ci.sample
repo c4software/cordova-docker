@@ -1,0 +1,15 @@
+image: c4software/cordova:latest
+
+stages:
+  - build
+
+build_android:
+  stage: build
+  only:
+    - master
+  when: manual
+  script:
+    - cordova build android --release
+  artifacts:
+    paths:
+      - platforms/android/build/outputs/apk/

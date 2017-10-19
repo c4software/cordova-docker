@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM java:8
 MAINTAINER c4software [at] gmail [dot] com
 
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -28,15 +28,9 @@ RUN apt-get update &&  \
 
 # Install sass scss_lint
     gem install sass scss_lint && \
-    
+
 # Font libraries
     apt-get -qqy install fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable libfreetype6 libfontconfig && \
-
-# install python-software-properties (so you can do add-apt-repository)
-    apt-get install -y -q python-software-properties software-properties-common  && \
-    add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" -y && \
-    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
-    apt-get update && apt-get -y install oracle-java8-installer && \
 
 # System libs for android enviroment
     echo ANDROID_HOME="${ANDROID_HOME}" >> /etc/environment && \
@@ -49,7 +43,7 @@ RUN apt-get update &&  \
 
 # Install Android Tools
     mkdir  /opt/android-sdk-linux && cd /opt/android-sdk-linux && \
-    wget --output-document=android-tools-sdk.zip --quiet https://dl.google.com/android/repository/tools_r25.2.3-linux.zip && \
+    wget --output-document=android-tools-sdk.zip --quiet https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && \
     unzip -q android-tools-sdk.zip && \
     rm -f android-tools-sdk.zip && \
     chown -R root. /opt
@@ -58,7 +52,7 @@ RUN apt-get update &&  \
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 # Install Android SDK
-RUN yes Y | ${ANDROID_HOME}/tools/bin/sdkmanager "build-tools;25.0.2" "platforms;android-25" "platform-tools" "extras;google;m2repository" "extras;android;m2repository" "extras;google;google_play_services"
+RUN yes Y | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses
 RUN cordova telemetry off
 
 # Installation de Graddle

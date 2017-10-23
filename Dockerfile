@@ -64,6 +64,20 @@ RUN wget https://services.gradle.org/distributions/gradle-4.1-bin.zip && \
     ln -s /opt/gradle/gradle-4.1/bin/gradle /usr/bin/gradle && \
     rm gradle-4.1-bin.zip
 
+RUN yes Y | ${ANDROID_HOME}/tools/bin/sdkmanager "platforms;android-26" \
+    "platforms;android-25" \
+    "platforms;android-24" \
+    "build-tools;26.0.2" \
+    "build-tools;26.0.1" \
+    "build-tools;25.0.3" \
+    "build-tools;24.0.3" \
+    "extras;android;m2repository" \
+    "extras;google;m2repository" \
+    "extras;google;google_play_services" \
+    "add-ons;addon-google_apis-google-23" \
+    "add-ons;addon-google_apis-google-22" \
+    "add-ons;addon-google_apis-google-21"
+
 RUN mkdir Sources
 WORKDIR Sources
 CMD []

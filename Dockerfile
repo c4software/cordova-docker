@@ -55,6 +55,8 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 RUN yes Y | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses
 RUN cordova telemetry off
 
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager "platform-tools"
+
 # Installation de Graddle
 RUN wget https://services.gradle.org/distributions/gradle-4.1-bin.zip && \
     mkdir /opt/gradle && \

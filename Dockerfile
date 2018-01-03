@@ -78,6 +78,9 @@ RUN yes Y | ${ANDROID_HOME}/tools/bin/sdkmanager "platforms;android-26" \
     "add-ons;addon-google_apis-google-22" \
     "add-ons;addon-google_apis-google-21"
 
+# Ajout SSH Client (en cas de submodule)
+RUN apt-get install -y openssh-client
+
 RUN mkdir Sources
 WORKDIR Sources
 CMD []
